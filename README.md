@@ -1,7 +1,9 @@
 Effects on iOS
 --------------
 
-A little experiment to have multicore OCaml with effects on iOS (currently just the simulator). You could probably do this very quickly with the excellent [reason-mobile](https://github.com/EduardoRFS/reason-mobile), but I'm more familiar with opam+dune world from [my adventures with RISC-V](https://github.com/patricoferris/riscv-o-spec).
+*Very WIP & Experimental*
+
+A little experiment to have multicore OCaml with effects on iOS (currently just the simulator). In particular the GCD backend for [eio](https://github.com/ocaml-multicore/eio). You could probably do this very quickly with the excellent [reason-mobile](https://github.com/EduardoRFS/reason-mobile), but I'm more familiar with opam+dune world from [my adventures with RISC-V](https://github.com/patricoferris/riscv-o-spec).
 
 This uses the dune-workspace + cross-compiler trick (similar to what [Mirage 4](https://next.mirage.io) does, but a little more manual). This trick requires building a cross-compiling OCaml compiler and then using findlib toolchains to switch out what compiler is used for a dune workspace. The submoduled multicore compiler has the needed Makefile changes to make it cross-compiling plus scripts to build and install it. Something like the following should work:
 
@@ -16,7 +18,21 @@ cd ocaml-multicore
 ./build.sh
 ./install.sh
 cd ..
-make build
 ```
 
 In order to not have to build a large [opam-repository overlay](https://github.com/patricoferris/opam-cross-shakti), we can use [`opam monorepo`](https://github.com/ocamllabs/opam-monorepo) to get all of the transitive dependencies (that can be built with dune) and build the application as a ... "monorepo".
+
+[`opam monorepo` unfortunately doesn't keep patches](https://github.com/ocamllabs/opam-monorepo/issues/113) from opam repositories, which are used quite a bit in the multicore opam-repository. The `vendor` directory contains sources for those things and we add filesystem pins to let `opam monorepo lock` know about them.
+
+There's still bits of `Unix` floating about which I'm not sure needs to be removed or not... at any rate, after doing a `opam monorepo pull` you will need to edit `duniverse/eio/lib_ctf/dune` to include `unix` as a library...
+
+You should be able to get things going with:
+
+```sh
+# Builds the application with dune (using the iOS toolchain)
+make build
+# Boots a specific simulator (for me it is iOS 8, change the id for something else)
+make boot
+# Spawns a process to run on the simulator i.e. our executable
+make sim
+```

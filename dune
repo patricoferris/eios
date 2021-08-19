@@ -1,1 +1,1 @@
-(dirs * \ ocaml-multicore)
+(dirs * \ ocaml-multicore vendor)

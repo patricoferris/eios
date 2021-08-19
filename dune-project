@@ -1,5 +1,15 @@
 (lang dune 2.9)
 
+(name eios)
+
+(source
+ (github patricoferris/eios))
+
+(license ISC)
+
+(authors "Patrick Ferris")
+
+(maintainers "pf341@patricoferris.com")
 
 (generate_opam_files true)
 

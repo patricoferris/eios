@@ -1,12 +1,5 @@
-effect Print : string -> unit
-
-let print s = perform (Print s)
-
-let main () =
-  print "World";
-  print "Hello"
+open Eio.Std
 
 let () =
-  match main () with
-   | () -> ()
-   | effect (Print s) k -> continue k (); print_endline s
+  Eio_gcd.run @@ fun env ->
+  Eio.Flow.copy_string "Hello, world!\n" (Eio.Stdenv.stdout env)

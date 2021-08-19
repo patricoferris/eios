@@ -1,0 +1,7 @@
+pin-depends: [
+  ["eio.dev" "git+https://github.com/patricoferris/eioio#macos-gcd"]
+  ["ctf.dev" "git+https://github.com/patricoferris/eioio#macos-gcd"]
+  ["eio_gcd.dev" "git+https://github.com/patricoferris/eioio#macos-gcd"]
+  ["ocaml-migrate-parsetree.2.1.0+effect-syntax" "file://./vendor/ocaml-migrate-parsetree.2.1.0+effect-syntax"]
+  ["ppxlib.0.22.0+effect-syntax" "file://./vendor/ppxlib.0.22.0+effect-syntax"]
+]
