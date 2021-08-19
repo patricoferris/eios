@@ -1,0 +1,3 @@
+[submodule "ocaml-multicore"]
+	path = ocaml-multicore
+	url = https://github.com/patricoferris/ocaml-multicore

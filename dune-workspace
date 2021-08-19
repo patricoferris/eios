@@ -1,0 +1,11 @@
+(lang dune 2.0)
+
+(context (default))
+
+(profile release)
+
+(context (default
+  (name ios)
+  (host default)
+  (toolchain ios)
+  (disable_dynamically_linked_foreign_archives true)))

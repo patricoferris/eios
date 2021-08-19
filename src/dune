@@ -1,0 +1,4 @@
+(executable
+ (enabled_if (= %{context_name} "ios"))
+ (public_name eios)
+ (name main))
