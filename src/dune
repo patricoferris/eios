@@ -1,5 +1,26 @@
+
+
+
 (executable
  (enabled_if (= %{context_name} "ios"))
- (public_name eios)
  (name main)
+ (ocamlopt_flags (:standard -ccopt "-arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.1.sdk -framework UIkit -framework Foundation"))
+ (link_flags (:standard -cclib "-Xlinker -objc_abi_version -Xlinker 2"))
+ (foreign_stubs
+  (language c)
+  (flags
+   (:standard -framework UIkit -framework Foundation -x objective-c -DCAML_NAME_SPACE))
+  (names eios_stubs))
  (libraries eio_gcd))
+
+(subdir
+ Eios.app
+ (rule
+ (enabled_if (= %{context_name} "ios"))
+ (deps ../main.exe ../Info.plist ../icon.jpeg)
+ (targets main Info.plist)
+ (action
+   (progn 
+     (copy ../main.exe main)
+     (copy ../Info.plist Info.plist)
+     (copy ../icon.jpeg icon.jpeg)))))

@@ -29,10 +29,11 @@ There's still bits of `Unix` floating about which I'm not sure needs to be remov
 You should be able to get things going with:
 
 ```sh
-# Builds the application with dune (using the iOS toolchain)
-make build
 # Boots a specific simulator (for me it is iOS 8, change the id for something else)
 make boot
-# Spawns a process to run on the simulator i.e. our executable
-make sim
+open -a Simulator.app
+# Installs the very basic app on the device
+make install
 ```
+
+Note, as of the time of writing the app doesn't absolutely nothing fancy with effects, that can come later.

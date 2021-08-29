@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>eios</string>
 	<key>CFBundleExecutable</key>
-	<string>app</string>
+	<string>main</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.eios</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -22,6 +22,10 @@
 	<string>EIOS</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleIconFile</key>
+	<string>icon.jpeg</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
