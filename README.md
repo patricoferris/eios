@@ -40,7 +40,7 @@ make install
 
 ### Future Plans
 
-Right now effects are not being put to great use. Just getting to the point of cross-compiling and running on a simulator and using `eio` the the [gcd](https://github.com/patricoferris/ocaml-dispatch) backend took a bit of effort. But now that's mostly done, so the future ideas are:
+Right now effects are not being put to great use. Just getting to the point of cross-compiling and running on a simulator and using `eio` with the [gcd](https://github.com/patricoferris/ocaml-dispatch) backend took a bit of effort. But now that's mostly done, so the future ideas are:
 
  - Can effects be used to write a cleaner RunLoop ?
  - Could you write some kind of stateful component library with effects a bit like React.js ?
