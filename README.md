@@ -3,9 +3,11 @@ Effects on iOS
 
 *Very WIP & Experimental*
 
+### Overview
+
 A little experiment to have multicore OCaml with effects on iOS (currently just the simulator). In particular the GCD backend for [eio](https://github.com/ocaml-multicore/eio). You could probably do this very quickly with the excellent [reason-mobile](https://github.com/EduardoRFS/reason-mobile), but I'm more familiar with opam+dune world from [my adventures with RISC-V](https://github.com/patricoferris/riscv-o-spec).
 
-This uses the dune-workspace + cross-compiler trick (similar to what [Mirage 4](https://next.mirage.io) does, but a little more manual). This trick requires building a cross-compiling OCaml compiler and then using findlib toolchains to switch out what compiler is used for a dune workspace. The submoduled multicore compiler has the needed Makefile changes to make it cross-compiling plus scripts to build and install it. Something like the following should work:
+This uses the dune-workspace + cross-compiler trick (similar to what [Mirage 4](https://next.mirage.io) does, but a little more manual). This trick requires building a cross-compiling OCaml compiler and then using `ocamlfind` toolchains to switch out what compiler is used for a dune workspace. The submoduled multicore compiler has the required Makefile changes to make it cross-compiling plus scripts to build and install it. Something like the following should work:
 
 ```sh
 git clone https://github.com/patricoferris/eios
@@ -36,4 +38,10 @@ open -a Simulator.app
 make install
 ```
 
-Note, as of the time of writing the app doesn't absolutely nothing fancy with effects, that can come later.
+### Future Plans
+
+Right now effects are not being put to great use. Just getting to the point of cross-compiling and running on a simulator and using `eio` the the [gcd](https://github.com/patricoferris/ocaml-dispatch) backend took a bit of effort. But now that's mostly done, so the future ideas are:
+
+ - Can effects be used to write a cleaner RunLoop ?
+ - Could you write some kind of stateful component library with effects a bit like React.js ?
+ - `Eio_gcd` needs more work to add the network stack (see bindings to [Network.Framework](https://github.com/patricoferris/ocaml-network)), once in place it can be used to do some network calls.
